@@ -1,23 +1,41 @@
 
-
+//task description
 type Task = {
   id: string;
   description: string
   status:string
   completed: boolean
 }
+//global variables
   let i = 0;
   let item: Task;
  
+  //DOM properties
 const table = document.querySelector('#table') as HTMLTableElement
 const taskQuery = document.querySelector('.query') as HTMLInputElement
 const newTaskBtn = document.querySelector('.create') as HTMLButtonElement
+const resetBtn = document.querySelector(".btn-warning") as HTMLButtonElement
+const completeBtn = document.querySelector(".btn-success") as HTMLButtonElement
+const deleteBtn = document.querySelector(".btn-danger") as HTMLButtonElement
 
+//id incrementor
 function taskCounter () {
   i++
 
 }
 
+//Button tasks
+
+resetBtn.addEventListener('click', () => { 
+  //delete all contents of table
+})
+completeBtn.addEventListener('click', () => {
+  item.completed = true;
+ })
+deleteBtn.addEventListener('click', () => {
+  table.removeChild //clicked row ()
+
+ })
 
 newTaskBtn.addEventListener('click', ()=>{
   
