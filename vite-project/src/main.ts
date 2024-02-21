@@ -1,14 +1,14 @@
 
 //task description
 type Task = {
-  id: string;
+  id: Number;
   description: string
   status:string
   completed: boolean
 }
 //global variables
-  let i = 0;
-  let item: Task;
+  let i = 1;
+  let item: Task = {id: 0, description: "", status: "", completed: false};
  
   //DOM properties
 const table = document.querySelector('#table') as HTMLTableElement
@@ -37,18 +37,20 @@ deleteBtn.addEventListener('click', () => {
 
  })
 
-newTaskBtn.addEventListener('click', ()=>{
-  
-  taskCounter()
-item.id =i.toString();
-item.status = 'In Progress';
-item.description = taskQuery.value;
-item.completed = false;
-console.log(item)
-appendTask(item);
+newTaskBtn.addEventListener('click', (event)=>{
+  event.preventDefault();
+const newitem: Task = {
+id :i,
+status : 'In Progress',
+description : taskQuery.value,
+completed : false
+}
+
+console.log(newitem)
+appendTask(newitem);
 
 
-})
+});
 
   
 
@@ -58,12 +60,13 @@ appendTask(item);
 
 //create a eventListener that takes the written query and sets it to task.description -- Should be done
 //set default value of task.status to 'In progress' and task.completed to false -- done
-//make finished button set task.status to completed  -- not done
-// make delete buttons work -- not done
+//make finished button set task.status to completed  --  done
+// make delete buttons work -- almost done
 
 
 
 function appendTask(item:Task){
+  taskCounter();
   const newRow = document.createElement('tr');
 
  newRow.innerHTML = `
@@ -80,21 +83,5 @@ function appendTask(item:Task){
         table.getElementsByTagName('tbody')[0].appendChild(newRow);
 
 
- 
-//   const todoID = document.createElement('th');
-//   const todoDesc = document.createElement('td');
-//   const todoStatus = document.createElement('td');
-// ;
 
-//   todoID.textContent = item.id; //add scope row to id
-//   todoDesc.textContent = item.description; //add contenteditable
-//   todoStatus.textContent = item.status;  //add contenteditable
-
-// newRow.appendChild(todoID);
-// newRow.appendChild(todoDesc);
-// newRow.appendChild(todoStatus);
-
-
-
-//   table.appendChild(newRow);
 }
